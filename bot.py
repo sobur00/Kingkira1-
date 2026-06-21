@@ -114,9 +114,9 @@ def build_status_message():
         buy_pct, sell_pct, hold_pct, hours = pct
         msg += (
             "\n\nLast " + str(round(hours, 1)) + "h breakdown:\n"
-            "BUY: " + str(round(buy_pct, 1)) + "%\n"
-            "SELL: " + str(round(sell_pct, 1)) + "%\n"
-            "HOLD: " + str(round(hold_pct, 1)) + "%"
+            "BUY: " + f"{buy_pct:.2f}%" + "\n"
+            "SELL: " + f"{sell_pct:.2f}%" + "\n"
+            "HOLD: " + f"{hold_pct:.2f}%"
         )
     return msg
 
@@ -271,7 +271,11 @@ while True:
                 pct = signal_percentages()
                 if pct:
                     buy_pct, sell_pct, hold_pct, hours = pct
-                    msg += "\n\nLast " + str(round(hours, 1)) + "h breakdown:\nBUY: " + str(round(buy_pct, 1)) + "%\nSELL: " + str(round(sell_pct, 1)) + "%\nHOLD: " + str(round(hold_pct, 1)) + "%"
+                    msg += (
+                        "\n\nLast " + str(round(hours, 1)) + "h breakdown:\nBUY: " + f"{buy_pct:.2f}%" + "\n"
+                        "SELL: " + f"{sell_pct:.2f}%" + "\n"
+                        "HOLD: " + f"{hold_pct:.2f}%"
+                    )
 
                 send(msg, reply_markup=refresh_buttons())
             last_signal = sig
